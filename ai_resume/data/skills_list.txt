@@ -1,0 +1,17 @@
+python
+sql
+machine learning
+power bi
+excel
+java
+c++
+tableau
+data analysis
+pandas
+numpy
+matplotlib
+deep learning
+tensorflow
+communication
+teamwork
+problem solving
