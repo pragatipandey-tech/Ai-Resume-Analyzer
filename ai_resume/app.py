@@ -34,6 +34,17 @@ if uploaded_file:
         st.subheader("📊 Resume Score")
         st.write(f"{score}/100")
 
+        st.subheader("💡 Suggestions")
+
+        if "project" not in text.lower():
+           st.write("❗ Add project section")
+
+        if len(skills) < 5:
+           st.write("❗ Add more skills")
+
+        if "experience" not in text.lower():
+           st.write("❗ Mention work experience")
+ 
     if job_desc:
         score = match_resume(text, job_desc)
         st.subheader("📊 Match Score")
