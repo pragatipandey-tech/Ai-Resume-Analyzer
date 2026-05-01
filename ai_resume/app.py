@@ -25,6 +25,15 @@ if uploaded_file:
     st.subheader("❌ Missing Skills")
     st.write(missing_skills[:10])  # limit output
 
+    # ✅ Resume Score
+    score = len(skills) * 5
+
+    if score > 100:
+        score = 100
+
+        st.subheader("📊 Resume Score")
+        st.write(f"{score}/100")
+
     if job_desc:
         score = match_resume(text, job_desc)
         st.subheader("📊 Match Score")
