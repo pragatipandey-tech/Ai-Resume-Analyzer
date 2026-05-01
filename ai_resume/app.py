@@ -20,6 +20,11 @@ if uploaded_file:
     st.subheader("📌 Extracted Skills")
     st.write(skills)
 
+    missing_skills = [skill for skill in skills_list if skill not in skills]
+
+    st.subheader("❌ Missing Skills")
+    st.write(missing_skills[:10])  # limit output
+
     if job_desc:
         score = match_resume(text, job_desc)
         st.subheader("📊 Match Score")
