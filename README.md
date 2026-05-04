@@ -1,4 +1,29 @@
-# Ai-Resume-Analyzer
-AI Resume Analyzer is a smart web application that analyzes resumes using NLP techniques. 
+# 🤖 AI Resume Analyzer
 
-It extracts key skills, matches them with job descriptions, and provides a score along with suggestions to improve the resume. 
+AI Resume Analyzer is a smart web application that analyzes resumes using Natural Language Processing (NLP). It extracts key skills, compares them with job descriptions, and provides a score along with improvement suggestions.
+
+---
+
+## 🚀 Features
+
+- 📄 Upload Resume (PDF/DOCX)
+- 🔍 Extract Skills Automatically
+- ❌ Identify Missing Skills
+- 📊 Resume Scoring System
+- 🎯 Job Description Matching
+- 💡 Smart Suggestions for Improvement
+- 📥 Download Resume Report
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- Streamlit  
+- NLP (spaCy)  
+- Scikit-learn  
+- PyPDF2  
+- python-docx  
+
+---
+
