@@ -27,3 +27,18 @@ AI Resume Analyzer is a smart web application that analyzes resumes using Natura
 
 ---
 
+## 📁 Project Structure
+
+ai_resume_analyzer/
+│── app.py
+│── requirements.txt
+│── README.md
+│
+├── utils/
+│   ├── parser.py
+│   ├── skills.py
+│   ├── matcher.py
+│
+├── data/
+│   ├── skills_list.txt
+```
