@@ -83,7 +83,7 @@ streamlit run app.py
 
 ## 📬 Contact
 
-If you have any suggestions or feedback, feel free to reach out.
+If you have any suggestions or feedback,feel free to reach out.
 
 ---
 
