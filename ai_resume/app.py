@@ -6,7 +6,7 @@ from utils.matcher import match_resume
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
-    page_title="AI Resume Analyzer",
+    page_title="AI ATS Resume Analyzer",
     page_icon="🤖",
     layout="wide"
 )
@@ -15,18 +15,18 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Main Background */
+/* Background */
 .stApp {
     background: linear-gradient(to right, #141E30, #243B55);
     color: white;
 }
 
-/* Hide Streamlit Menu */
+/* Hide Streamlit Branding */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-/* Title */
+/* Main Title */
 .main-title {
     text-align: center;
     font-size: 55px;
@@ -35,6 +35,7 @@ header {visibility: hidden;}
     margin-bottom: 0;
 }
 
+/* Subtitle */
 .subtitle {
     text-align: center;
     color: #d1d5db;
@@ -53,7 +54,7 @@ header {visibility: hidden;}
     margin-bottom: 20px;
 }
 
-/* Metrics */
+/* Metric Cards */
 .metric-card {
     background: rgba(255,255,255,0.1);
     padding: 20px;
@@ -72,11 +73,6 @@ header {visibility: hidden;}
     border-radius: 15px;
     border: none;
     padding: 12px;
-    transition: 0.3s;
-}
-
-.stButton>button:hover {
-    transform: scale(1.02);
 }
 
 /* Download Button */
@@ -101,10 +97,22 @@ header {visibility: hidden;}
     font-weight: bold;
 }
 
+/* Missing Skill Tags */
 .missing-tag {
     display: inline-block;
     background: #ff4b4b;
     color: white;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Matching Skill Tags */
+.match-tag {
+    display: inline-block;
+    background: #4ade80;
+    color: black;
     padding: 8px 15px;
     margin: 5px;
     border-radius: 20px;
@@ -116,12 +124,12 @@ header {visibility: hidden;}
 
 # ---------------- HEADER ----------------
 st.markdown(
-    "<h1 class='main-title'>🤖 AI Resume Analyzer</h1>",
+    "<h1 class='main-title'>🤖 AI ATS Resume Analyzer</h1>",
     unsafe_allow_html=True
 )
 
 st.markdown(
-    "<p class='subtitle'>Analyze resumes with AI-powered insights</p>",
+    "<p class='subtitle'>Analyze resumes according to job descriptions using AI-powered ATS logic</p>",
     unsafe_allow_html=True
 )
 
@@ -130,159 +138,259 @@ with open("data/skills_list.txt") as f:
     skills_list = f.read().splitlines()
 
 # ---------------- SIDEBAR ----------------
-st.sidebar.title("🚀 About Project")
+st.sidebar.title("🚀 About ATS Analyzer")
 
 st.sidebar.info("""
-This AI-powered system helps you:
+This AI ATS system helps you:
 
-✅ Extract resume skills  
-✅ Find missing skills  
-✅ Calculate resume score  
-✅ Match with job descriptions  
+✅ Analyze resume for a specific job  
+✅ Detect matching skills  
+✅ Detect missing skills  
+✅ Calculate ATS match score  
 ✅ Improve resume quality  
 """)
 
-# ---------------- FILE UPLOAD ----------------
+# ---------------- INPUTS ----------------
 uploaded_file = st.file_uploader(
     "📄 Upload Resume",
     type=["pdf", "docx"]
 )
 
 job_desc = st.text_area(
-    "📝 Paste Job Description (Optional)"
+    "📝 Paste Job Description"
 )
 
-# ---------------- MAIN LOGIC ----------------
-if uploaded_file:
+# ---------------- VALIDATION ----------------
+if uploaded_file and not job_desc:
+    st.warning("⚠️ Please paste the job description")
 
+# ---------------- MAIN LOGIC ----------------
+if uploaded_file and job_desc:
+
+    # Extract Resume Text
     text = extract_text(uploaded_file)
 
-    # Extract skills
-    skills = extract_skills(text, skills_list)
+    # Extract Resume Skills
+    resume_skills = extract_skills(text, skills_list)
 
-    # Missing skills
-    missing_skills = [
-        skill for skill in skills_list if skill not in skills
+    # Extract Job Skills
+    job_skills = extract_skills(job_desc, skills_list)
+
+    # Matching Skills
+    matching_skills = [
+        skill for skill in resume_skills
+        if skill in job_skills
     ]
 
-    # Resume score
-    score = len(skills) * 5
+    # Missing Skills
+    missing_skills = [
+        skill for skill in job_skills
+        if skill not in resume_skills
+    ]
+
+    # ATS Match Score
+    match_score = match_resume(text, job_desc)
+
+    # Resume Score
+    score = len(matching_skills) * 10
+
     if score > 100:
         score = 100
 
     # ---------------- METRICS ----------------
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         st.markdown(f"""
         <div class='metric-card'>
-            <h2>✅ Skills</h2>
-            <h1>{len(skills)}</h1>
+            <h3>📌 Resume Skills</h3>
+            <h1>{len(resume_skills)}</h1>
         </div>
         """, unsafe_allow_html=True)
 
     with col2:
         st.markdown(f"""
         <div class='metric-card'>
-            <h2>❌ Missing</h2>
-            <h1>{len(missing_skills)}</h1>
+            <h3>✅ Matching Skills</h3>
+            <h1>{len(matching_skills)}</h1>
         </div>
         """, unsafe_allow_html=True)
 
     with col3:
         st.markdown(f"""
         <div class='metric-card'>
-            <h2>📊 Score</h2>
+            <h3>❌ Missing Skills</h3>
+            <h1>{len(missing_skills)}</h1>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col4:
+        st.markdown(f"""
+        <div class='metric-card'>
+            <h3>🎯 ATS Score</h3>
             <h1>{score}/100</h1>
         </div>
         """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ---------------- SKILLS ----------------
-    col1, col2 = st.columns(2)
+    # ---------------- PIE CHARTS ----------------
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    with col1:
-        st.markdown("<div class='card'>", unsafe_allow_html=True)
-        st.subheader("📌 Extracted Skills")
+    st.subheader("📊 Resume Analytics")
 
-        for skill in skills:
-            st.markdown(
-                f"<span class='skill-tag'>{skill}</span>",
-                unsafe_allow_html=True
-            )
+    chart_col1, chart_col2 = st.columns(2)
 
-        st.markdown("</div>", unsafe_allow_html=True)
+    with chart_col1:
 
-    with col2:
-        st.markdown("<div class='card'>", unsafe_allow_html=True)
-        st.subheader("❌ Missing Skills")
+        pie_data = {
+            "Category": ["Matching Skills", "Missing Skills"],
+            "Count": [len(matching_skills), len(missing_skills)]
+        }
 
-        for skill in missing_skills[:10]:
-            st.markdown(
-                f"<span class='missing-tag'>{skill}</span>",
-                unsafe_allow_html=True
-            )
-
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    # ---------------- JOB MATCH ----------------
-    if job_desc:
-        match_score = match_resume(text, job_desc)
-
-        st.markdown("<div class='card'>", unsafe_allow_html=True)
-
-        st.subheader("🎯 Job Match Score")
-
-        st.progress(int(match_score))
-
-        st.markdown(
-            f"<h2 style='text-align:center;'>{match_score}% Match</h2>",
-            unsafe_allow_html=True
+        fig1 = px.pie(
+            pie_data,
+            names="Category",
+            values="Count",
+            title="Skill Match Analysis",
+            hole=0.4
         )
 
+        fig1.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color="white"
+        )
+
+        st.plotly_chart(fig1, use_container_width=True)
+
+    with chart_col2:
+
+        score_data = {
+            "Category": ["ATS Score", "Remaining"],
+            "Value": [score, 100-score]
+        }
+
+        fig2 = px.pie(
+            score_data,
+            names="Category",
+            values="Value",
+            title="ATS Score Analysis",
+            hole=0.4
+        )
+
+        fig2.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color="white"
+        )
+
+        st.plotly_chart(fig2, use_container_width=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # ---------------- SKILLS SECTION ----------------
+    col1, col2 = st.columns(2)
+
+    # Matching Skills
+    with col1:
+
+        st.markdown("<div class='card'>", unsafe_allow_html=True)
+
+        st.subheader("✅ Matching Skills")
+
+        if matching_skills:
+            for skill in matching_skills:
+                st.markdown(
+                    f"<span class='match-tag'>{skill}</span>",
+                    unsafe_allow_html=True
+                )
+        else:
+            st.warning("No matching skills found")
+
         st.markdown("</div>", unsafe_allow_html=True)
+
+    # Missing Skills
+    with col2:
+
+        st.markdown("<div class='card'>", unsafe_allow_html=True)
+
+        st.subheader("❌ Missing Skills")
+
+        if missing_skills:
+            for skill in missing_skills:
+                st.markdown(
+                    f"<span class='missing-tag'>{skill}</span>",
+                    unsafe_allow_html=True
+                )
+        else:
+            st.success("No missing skills")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    # ---------------- MATCH SCORE ----------------
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+
+    st.subheader("🎯 ATS Match Score")
+
+    st.progress(int(match_score))
+
+    st.markdown(
+        f"<h2 style='text-align:center;'>{match_score}% Match</h2>",
+        unsafe_allow_html=True
+    )
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # ---------------- SUGGESTIONS ----------------
     st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    st.subheader("💡 Suggestions")
+    st.subheader("💡 ATS Suggestions")
 
     suggestions = []
+
+    if missing_skills:
+        suggestions.append(
+            f"Add these skills: {', '.join(missing_skills[:5])}"
+        )
 
     if "project" not in text.lower():
         suggestions.append("Add project section")
 
-    if len(skills) < 5:
-        suggestions.append("Add more technical skills")
-
     if "experience" not in text.lower():
         suggestions.append("Mention work experience")
+
+    if len(resume_skills) < 5:
+        suggestions.append("Add more technical skills")
 
     if suggestions:
         for suggestion in suggestions:
             st.warning(f"❗ {suggestion}")
     else:
-        st.success("✅ Your resume looks strong!")
+        st.success("✅ Excellent ATS-compatible resume!")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
     # ---------------- DOWNLOAD REPORT ----------------
     report = f"""
-AI Resume Analyzer Report
+AI ATS Resume Analyzer Report
 
-Skills Found:
-{skills}
+Resume Skills:
+{resume_skills}
+
+Matching Skills:
+{matching_skills}
 
 Missing Skills:
 {missing_skills}
+
+ATS Match Score:
+{match_score}%
 
 Resume Score:
 {score}/100
 """
 
     st.download_button(
-        "📥 Download Report",
+        "📥 Download ATS Report",
         report,
-        file_name="resume_report.txt"
+        file_name="ATS_Report.txt"
     )
