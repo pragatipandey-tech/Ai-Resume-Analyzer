@@ -1,38 +1,50 @@
-# 🤖 AI Resume Analyzer
+# 🤖 AI ATS Resume Analyzer
 
-AI Resume Analyzer is a smart web application that analyzes resumes using Natural Language Processing (NLP). 
+An AI-powered ATS (Applicant Tracking System) Resume Analyzer built using Streamlit, Gemini AI, NLP, and Machine Learning.
 
-It extracts key skills, compares them with job descriptions, and provides a score along with improvement suggestions.
+This project analyzes resumes according to a given job description and provides:
+
+- ATS Match Score
+- Matching Skills
+- Missing Skills
+- AI-Powered Resume Feedback
+- Resume Analytics Charts
+- Hiring Recommendations
 
 ---
 
 ## 🚀 Features
 
-- 📄 Upload Resume (PDF/DOCX)
-- 🔍 Extract Skills Automatically
-- ❌ Identify Missing Skills
-- 📊 Resume Scoring System
-- 🎯 Job Description Matching
-- 💡 Smart Suggestions for Improvement
-- 📥 Download Resume Report
+✅ Upload Resume (PDF/DOCX)  
+✅ Job Description Based Analysis  
+✅ ATS Resume Matching  
+✅ Skill Extraction using NLP  
+✅ Missing Skill Detection  
+✅ Interactive Pie Charts  
+✅ Resume Score Analysis  
+✅ Gemini AI Feedback  
+✅ AI Hiring Recommendations  
+✅ Download ATS Report  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python  
-- Streamlit  
-- spaCy (NLP)  
-- Scikit-learn  
-- PyPDF2  
-- python-docx  
+- Python
+- Streamlit
+- Gemini AI API
+- Plotly
+- Scikit-learn
+- NLP
+- PyPDF2
+- python-docx
 
 ---
 
 ## 📁 Project Structure
 
-```
-ai_resume_analyzer/
+```text
+ai_ats_resume_analyzer/
 │── app.py
 │── requirements.txt
 │── README.md
@@ -44,49 +56,124 @@ ai_resume_analyzer/
 │
 ├── data/
 │   ├── skills_list.txt
+│
+├── images/
+│   ├── screenshot.png
 ```
+
+---
 
 ## ⚙️ Installation
 
-1. Clone the repository:
-git clone https://github.com/your-username/ai-resume-analyzer.git
+### 1️⃣ Clone Repository
 
-2. Navigate to the project folder:
-cd ai-resume-analyzer
+```bash
+git clone https://github.com/your-username/ai-ats-resume-analyzer.git
+```
 
-3. Install dependencies:
+---
+
+### 2️⃣ Navigate to Project Folder
+
+```bash
+cd ai-ats-resume-analyzer
+```
+
+---
+
+### 3️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-4. Run the application:
+---
+
+### 4️⃣ Install Additional Packages
+
+```bash
+pip install plotly google-genai
+```
+
+---
+
+### 5️⃣ Add Gemini API Key
+
+Inside `app.py`:
+
+```python
+GEMINI_API_KEY = "YOUR_API_KEY"
+```
+
+Get API key from:
+
+https://ai.google.dev/
+
+---
+
+### 6️⃣ Run Application
+
+```bash
 streamlit run app.py
+```
 
 ---
 
 ## 📈 How It Works
 
-1. Upload your resume  
-2. System extracts text from file  
-3. Skills are identified from resume content  
-4. Compared with predefined skill list  
-5. Resume score is calculated  
-6. Suggestions are generated  
+1. Upload Resume  
+2. Paste Job Description  
+3. NLP extracts resume skills  
+4. ATS system compares skills with JD  
+5. Calculates ATS Match Score  
+6. Detects missing skills  
+7. Gemini AI generates intelligent feedback  
+8. Download ATS analysis report  
+
+---
+
+## 🤖 Gemini AI Features
+
+- Resume Strength Analysis
+- Resume Weakness Detection
+- ATS Compatibility Analysis
+- Hiring Recommendations
+- Smart Resume Suggestions
+
+---
+
+## 📊 Analytics Included
+
+- Skill Match Pie Chart
+- ATS Score Chart
+- Resume Metrics Dashboard
 
 ---
 
 ## 🌟 Future Improvements
 
-- Advanced NLP-based skill extraction  
-- Resume keyword highlighting  
-- Multiple resume comparison  
-- Deployment on cloud  
-- Improved UI/UX design  
+- AI Resume Rewriting
+- Interview Question Generator
+- Multi-Resume Comparison
+- Authentication System
+- Cloud Deployment
+- Resume Keyword Highlighting
+- Dark/Light Mode Toggle
 
 ---
 
 ## 📬 Contact
 
-If you have any suggestions or feedback, feel free to reach out.
+If you like this project, consider giving it a ⭐ on GitHub.
+
+Feel free to contribute or suggest improvements.
 
 ---
 
-⭐ If you like this project, don’t forget to give it a star!
+## ⭐ Support
+
+If you found this project useful:
+
+⭐ Star the repository  
+🍴 Fork the project  
+🚀 Share with others
