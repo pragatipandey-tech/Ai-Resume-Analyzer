@@ -2,7 +2,7 @@
 
 An AI-powered ATS (Applicant Tracking System) Resume Analyzer built using Streamlit, Gemini AI, NLP, and Machine Learning.
 
-This project analyzes resumes according to a given job description and provides:
+This application analyzes resumes according to a specific job description and provides:
 
 - ATS Match Score
 - Matching Skills
@@ -20,7 +20,7 @@ This project analyzes resumes according to a given job description and provides:
 ✅ ATS Resume Matching  
 ✅ Skill Extraction using NLP  
 ✅ Missing Skill Detection  
-✅ Interactive Pie Charts  
+✅ Interactive Analytics Charts  
 ✅ Resume Score Analysis  
 ✅ Gemini AI Feedback  
 ✅ AI Hiring Recommendations  
@@ -48,6 +48,7 @@ ai_ats_resume_analyzer/
 │── app.py
 │── requirements.txt
 │── README.md
+│── .gitignore
 │
 ├── utils/
 │   ├── parser.py
@@ -59,6 +60,9 @@ ai_ats_resume_analyzer/
 │
 ├── images/
 │   ├── screenshot.png
+│
+├── .streamlit/
+│   ├── secrets.toml
 ```
 
 ---
@@ -97,21 +101,33 @@ pip install plotly google-genai
 
 ---
 
-### 5️⃣ Add Gemini API Key
+## 🔐 Gemini API Setup
 
-Inside `app.py`:
+### Create `.streamlit/secrets.toml`
 
-```python
-GEMINI_API_KEY = "YOUR_API_KEY"
+```toml
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
 ```
 
-Get API key from:
+Get Gemini API key from:
 
 https://ai.google.dev/
 
 ---
 
-### 6️⃣ Run Application
+## 🔒 Protect API Key
+
+Create `.gitignore` file:
+
+```text
+.streamlit/secrets.toml
+```
+
+This prevents your secret API key from being uploaded to GitHub.
+
+---
+
+## ▶️ Run Application
 
 ```bash
 streamlit run app.py
@@ -124,7 +140,7 @@ streamlit run app.py
 1. Upload Resume  
 2. Paste Job Description  
 3. NLP extracts resume skills  
-4. ATS system compares skills with JD  
+4. ATS compares resume with job description  
 5. Calculates ATS Match Score  
 6. Detects missing skills  
 7. Gemini AI generates intelligent feedback  
@@ -134,11 +150,12 @@ streamlit run app.py
 
 ## 🤖 Gemini AI Features
 
-- Resume Strength Analysis
-- Resume Weakness Detection
 - ATS Compatibility Analysis
+- Resume Strength Detection
+- Resume Weakness Detection
+- Missing Skill Suggestions
 - Hiring Recommendations
-- Smart Resume Suggestions
+- Smart Resume Feedback
 
 ---
 
@@ -154,10 +171,10 @@ streamlit run app.py
 
 - AI Resume Rewriting
 - Interview Question Generator
+- Resume Keyword Highlighting
 - Multi-Resume Comparison
 - Authentication System
 - Cloud Deployment
-- Resume Keyword Highlighting
 - Dark/Light Mode Toggle
 
 ---
