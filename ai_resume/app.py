@@ -6,6 +6,11 @@ from utils.parser import extract_text
 from utils.skills import extract_skills
 from utils.matcher import match_resume
 
+# ---------------- GEMINI API ----------------
+GEMINI_API_KEY = "AIzaSyA32022lwlplavYMdT-Ctes4pOdWsAwwuI"
+
+client = genai.Client(api_key=GEMINI_API_KEY)
+
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="AI ATS Resume Analyzer",
@@ -131,7 +136,7 @@ st.markdown(
 )
 
 st.markdown(
-    "<p class='subtitle'>Analyze resumes according to job descriptions using AI-powered ATS logic</p>",
+    "<p class='subtitle'>Analyze resumes according to job descriptions using Gemini AI</p>",
     unsafe_allow_html=True
 )
 
@@ -140,51 +145,51 @@ with open("data/skills_list.txt") as f:
     skills_list = f.read().splitlines()
 
 # ---------------- SIDEBAR ----------------
-st.sidebar.title("🚀 About ATS Analyzer")
+st.sidebar.title("🚀 About Project")
 
 st.sidebar.info("""
-This AI ATS system helps you:
-
-✅ Analyze resume for a specific job  
-✅ Detect matching skills  
-✅ Detect missing skills  
-✅ Calculate ATS match score  
-✅ Improve resume quality  
+✅ ATS Resume Analysis  
+✅ AI Feedback using Gemini  
+✅ Skill Matching  
+✅ Missing Skill Detection  
+✅ Resume Score Analysis  
+✅ Interactive Charts  
 """)
 
-# ---------------- INPUTS ----------------
+# ---------------- FILE UPLOAD ----------------
 uploaded_file = st.file_uploader(
     "📄 Upload Resume",
     type=["pdf", "docx"]
 )
 
+# ---------------- JOB DESCRIPTION ----------------
 job_desc = st.text_area(
     "📝 Paste Job Description"
 )
 
-# ---------------- VALIDATION ----------------
+# ---------------- WARNING ----------------
 if uploaded_file and not job_desc:
     st.warning("⚠️ Please paste the job description")
 
 # ---------------- MAIN LOGIC ----------------
 if uploaded_file and job_desc:
 
-    # Extract Resume Text
+    # Extract resume text
     text = extract_text(uploaded_file)
 
-    # Extract Resume Skills
+    # Resume skills
     resume_skills = extract_skills(text, skills_list)
 
-    # Extract Job Skills
+    # Job description skills
     job_skills = extract_skills(job_desc, skills_list)
 
-    # Matching Skills
+    # Matching skills
     matching_skills = [
         skill for skill in resume_skills
         if skill in job_skills
     ]
 
-    # Missing Skills
+    # Missing skills
     missing_skills = [
         skill for skill in job_skills
         if skill not in resume_skills
@@ -193,7 +198,7 @@ if uploaded_file and job_desc:
     # ATS Match Score
     match_score = match_resume(text, job_desc)
 
-    # Resume Score
+    # Resume score
     score = len(matching_skills) * 10
 
     if score > 100:
@@ -243,6 +248,7 @@ if uploaded_file and job_desc:
 
     chart_col1, chart_col2 = st.columns(2)
 
+    # Skill Match Chart
     with chart_col1:
 
         pie_data = {
@@ -265,11 +271,12 @@ if uploaded_file and job_desc:
 
         st.plotly_chart(fig1, use_container_width=True)
 
+    # ATS Score Chart
     with chart_col2:
 
         score_data = {
             "Category": ["ATS Score", "Remaining"],
-            "Value": [score, 100-score]
+            "Value": [score, 100 - score]
         }
 
         fig2 = px.pie(
@@ -289,7 +296,7 @@ if uploaded_file and job_desc:
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # ---------------- SKILLS SECTION ----------------
+    # ---------------- SKILL DISPLAY ----------------
     col1, col2 = st.columns(2)
 
     # Matching Skills
@@ -342,32 +349,43 @@ if uploaded_file and job_desc:
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # ---------------- SUGGESTIONS ----------------
+    # ---------------- GEMINI AI FEEDBACK ----------------
     st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    st.subheader("💡 ATS Suggestions")
+    st.subheader("🤖 Gemini AI Feedback")
 
-    suggestions = []
+    with st.spinner("Analyzing Resume with Gemini AI..."):
 
-    if missing_skills:
-        suggestions.append(
-            f"Add these skills: {', '.join(missing_skills[:5])}"
+        prompt = f"""
+        You are an expert ATS Resume Analyzer and Hiring Assistant.
+
+        Analyze the following resume according to the given job description.
+
+        Resume:
+        {text}
+
+        Job Description:
+        {job_desc}
+
+        Provide:
+        1. ATS compatibility analysis
+        2. Missing important skills
+        3. Resume strengths
+        4. Resume weaknesses
+        5. Suggestions to improve ATS score
+        6. Final hiring recommendation
+
+        Keep the response professional and easy to read.
+        """
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
         )
 
-    if "project" not in text.lower():
-        suggestions.append("Add project section")
+        ai_feedback = response.text
 
-    if "experience" not in text.lower():
-        suggestions.append("Mention work experience")
-
-    if len(resume_skills) < 5:
-        suggestions.append("Add more technical skills")
-
-    if suggestions:
-        for suggestion in suggestions:
-            st.warning(f"❗ {suggestion}")
-    else:
-        st.success("✅ Excellent ATS-compatible resume!")
+        st.write(ai_feedback)
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -389,6 +407,9 @@ ATS Match Score:
 
 Resume Score:
 {score}/100
+
+AI Feedback:
+{ai_feedback}
 """
 
     st.download_button(
