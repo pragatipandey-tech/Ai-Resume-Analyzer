@@ -1,5 +1,7 @@
 import streamlit as st
 import plotly.express as px
+from google import genai
+
 from utils.parser import extract_text
 from utils.skills import extract_skills
 from utils.matcher import match_resume
