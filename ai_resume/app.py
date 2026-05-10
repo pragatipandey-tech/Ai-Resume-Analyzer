@@ -335,6 +335,34 @@ if uploaded_file and job_desc:
 
         st.markdown("</div>", unsafe_allow_html=True)
 
+
+    # ---------------- SKILL GAP ANALYSIS ----------------
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+
+    st.subheader("📊 Skill Gap Analysis")
+
+    if job_skills:
+
+        for skill in job_skills:
+
+            # Skill present in resume
+            if skill in resume_skills:
+
+                st.write(f"✅ {skill}")
+                st.progress(100)
+
+            # Skill missing
+            else:
+
+                st.write(f"❌ {skill}")
+                st.progress(15)
+
+    else:
+        st.warning("No job-related skills detected.")
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
     # ---------------- MATCH SCORE ----------------
     st.markdown("<div class='card'>", unsafe_allow_html=True)
 
