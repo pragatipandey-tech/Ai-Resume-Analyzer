@@ -182,7 +182,6 @@ streamlit run app.py
 ## 📬 Contact
 
 If you like this project, consider giving it a ⭐ on GitHub.
-
 Feel free to contribute or suggest improvements.
 
 ---
@@ -190,7 +189,6 @@ Feel free to contribute or suggest improvements.
 ## ⭐ Support
 
 If you found this project useful:
-
 ⭐ Star the repository  
 🍴 Fork the project  
 🚀 Share with others
