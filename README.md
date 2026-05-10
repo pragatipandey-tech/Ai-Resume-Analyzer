@@ -106,7 +106,7 @@ pip install plotly google-genai
 ### Create `.streamlit/secrets.toml`
 
 ```toml
-GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
+GEMINI_API_KEY = "AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 Get Gemini API key from:
