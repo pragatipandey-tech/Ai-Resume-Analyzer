@@ -1,6 +1,6 @@
 # 🤖 AI ATS Resume Analyzer
 
-An AI-powered ATS (Applicant Tracking System) Resume Analyzer built using Streamlit, Gemini AI, NLP, and Machine Learning
+An AI-powered ATS (Applicant Tracking System) Resume Analyzer built using Streamlit, Gemini AI, NLP, and Machine Learning.
 
 This application analyzes resumes according to a specific job description and provides:
 
