@@ -1,34 +1,33 @@
 # 🤖 AI ATS Resume Analyzer
 
-An AI-powered ATS (Applicant Tracking System) Resume Analyzer built using Streamlit, Gemini AI, NLP, and Machine Learning.
+An advanced AI-powered ATS (Applicant Tracking System) Resume Analyzer built using Streamlit, Gemini AI, NLP, and Machine Learning.
 
-This application analyzes resumes according to a specific job description and provides:
-
-- ATS Match Score
-- Matching Skills
-- Missing Skills
-- AI-Powered Resume Feedback
-- Resume Analytics Charts
-- Hiring Recommendations
+This application analyzes resumes according to a specific job description and provides intelligent ATS insights with a modern interactive dashboard UI.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
 ✅ Upload Resume (PDF/DOCX)  
 ✅ Job Description Based Analysis  
 ✅ ATS Resume Matching  
 ✅ Skill Extraction using NLP  
 ✅ Missing Skill Detection  
+✅ Skill Gap Analysis  
 ✅ Interactive Analytics Charts  
 ✅ Resume Score Analysis  
 ✅ Gemini AI Feedback  
 ✅ AI Hiring Recommendations  
 ✅ Download ATS Report  
+✅ Modern Animated Dashboard UI  
+✅ Glassmorphism Design  
+✅ Animated Gradient Background  
+✅ Hover Animation Effects  
+✅ Responsive Layout  
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
 - Python
 - Streamlit
@@ -38,10 +37,12 @@ This application analyzes resumes according to a specific job description and pr
 - NLP
 - PyPDF2
 - python-docx
+- HTML/CSS
+- Machine Learning
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 ai_ats_resume_analyzer/
@@ -67,9 +68,9 @@ ai_ats_resume_analyzer/
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
-### 1️⃣ Clone Repository
+## 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/your-username/ai-ats-resume-analyzer.git
@@ -77,7 +78,7 @@ git clone https://github.com/your-username/ai-ats-resume-analyzer.git
 
 ---
 
-### 2️⃣ Navigate to Project Folder
+## 2️⃣ Navigate to Project Folder
 
 ```bash
 cd ai-ats-resume-analyzer
@@ -85,7 +86,7 @@ cd ai-ats-resume-analyzer
 
 ---
 
-### 3️⃣ Install Dependencies
+## 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -93,7 +94,7 @@ pip install -r requirements.txt
 
 ---
 
-### 4️⃣ Install Additional Packages
+## 4️⃣ Install Additional Packages
 
 ```bash
 pip install plotly google-genai
@@ -101,12 +102,12 @@ pip install plotly google-genai
 
 ---
 
-## 🔐 Gemini API Setup
+# 🔐 Gemini API Setup
 
-### Create `.streamlit/secrets.toml`
+## Create `.streamlit/secrets.toml`
 
 ```toml
-GEMINI_API_KEY = "AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GEMINI_API_KEY = "AWRxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 Get Gemini API key from:
@@ -115,7 +116,7 @@ https://ai.google.dev/
 
 ---
 
-## 🔒 Protect API Key
+# 🔒 Protect API Key
 
 Create `.gitignore` file:
 
@@ -127,15 +128,21 @@ This prevents your secret API key from being uploaded to GitHub.
 
 ---
 
-## ▶️ Run Application
+# ▶️ Run Application
 
 ```bash
 streamlit run app.py
 ```
 
+OR
+
+```bash
+python -m streamlit run app.py
+```
+
 ---
 
-## 📈 How It Works
+# 📈 How It Works
 
 1. Upload Resume  
 2. Paste Job Description  
@@ -143,12 +150,14 @@ streamlit run app.py
 4. ATS compares resume with job description  
 5. Calculates ATS Match Score  
 6. Detects missing skills  
-7. Gemini AI generates intelligent feedback  
-8. Download ATS analysis report  
+7. Performs Skill Gap Analysis  
+8. Generates analytics charts  
+9. Gemini AI generates intelligent feedback  
+10. Download ATS analysis report  
 
 ---
 
-## 🤖 Gemini AI Features
+# 🤖 Gemini AI Features
 
 - ATS Compatibility Analysis
 - Resume Strength Detection
@@ -156,39 +165,89 @@ streamlit run app.py
 - Missing Skill Suggestions
 - Hiring Recommendations
 - Smart Resume Feedback
+- Resume Improvement Suggestions
 
 ---
 
-## 📊 Analytics Included
+# 📊 Analytics Included
 
 - Skill Match Pie Chart
-- ATS Score Chart
+- ATS Score Analysis
 - Resume Metrics Dashboard
+- Skill Gap Analysis
+- Progress Indicators
+- Interactive Visualizations
 
 ---
 
-## 🌟 Future Improvements
+# 🎨 UI Features
+
+- Animated Gradient Background
+- Glassmorphism Cards
+- Neon AI Theme
+- Hover Animation Effects
+- Responsive Dashboard
+- Interactive UI Components
+- Modern Sidebar Design
+- Smooth Visual Experience
+
+---
+
+# 🌟 Future Improvements
 
 - AI Resume Rewriting
-- Interview Question Generator
+- AI Interview Question Generator
 - Resume Keyword Highlighting
 - Multi-Resume Comparison
 - Authentication System
 - Cloud Deployment
 - Dark/Light Mode Toggle
+- Circular ATS Score Meter
+- AI Career Recommendations
 
 ---
 
-## 📬 Contact
+# 📸 Dashboard Preview
+
+Add your dashboard screenshot here:
+
+```text
+images/screenshot.png
+```
+
+Example Markdown:
+
+```markdown
+![Dashboard Preview](images/screenshot.png)
+```
+
+---
+
+# 📬 Contact
 
 If you like this project, consider giving it a ⭐ on GitHub.
+
 Feel free to contribute or suggest improvements.
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
 If you found this project useful:
+
 ⭐ Star the repository  
 🍴 Fork the project  
-🚀 Share with others
+🚀 Share with others  
+
+---
+
+# 🔥 Project Highlights
+
+- Real AI Integration using Gemini API
+- ATS Resume Scoring System
+- NLP-based Skill Extraction
+- Interactive Data Visualization
+- Modern AI Dashboard UI
+- Real-time Resume Analysis
+- Professional Portfolio Project
+
