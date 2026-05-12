@@ -22,108 +22,115 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Background */
+/* Main Background */
 .stApp {
-    background: linear-gradient(to right, #141E30, #243B55);
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: white;
 }
 
 /* Hide Streamlit Branding */
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
 
 /* Main Title */
 .main-title {
     text-align: center;
-    font-size: 55px;
+    font-size: 60px;
     font-weight: bold;
-    color: white;
+    color: #00f5d4;
     margin-bottom: 0;
 }
 
 /* Subtitle */
 .subtitle {
     text-align: center;
-    color: #d1d5db;
     font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 40px;
+    color: #d1d5db;
+    margin-bottom: 30px;
 }
 
 /* Cards */
 .card {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     padding: 25px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: 0px 8px 32px rgba(0,0,0,0.3);
     margin-bottom: 20px;
 }
 
 /* Metric Cards */
 .metric-card {
-    background: rgba(255,255,255,0.1);
+    background: rgba(0, 245, 212, 0.08);
     padding: 20px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
 }
 
 /* Buttons */
 .stButton>button {
     width: 100%;
-    background: linear-gradient(to right, #00C9FF, #92FE9D);
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
     border-radius: 15px;
     border: none;
     padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(to right, #00f5d4, #00bbf9);
+    color: black;
 }
 
 /* Download Button */
 .stDownloadButton>button {
     width: 100%;
-    background: linear-gradient(to right, #FC466B, #3F5EFB);
-    color: white;
-    font-size: 18px;
     border-radius: 15px;
     border: none;
     padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff006e, #8338ec);
+    color: white;
 }
 
-/* Skill Tags */
-.skill-tag {
+/* Matching Skill Tags */
+.match-tag {
     display: inline-block;
-    background: #00C9FF;
+    background: #00f5d4;
     color: black;
     padding: 8px 15px;
-    margin: 5px;
     border-radius: 20px;
+    margin: 5px;
     font-weight: bold;
 }
 
 /* Missing Skill Tags */
 .missing-tag {
     display: inline-block;
-    background: #ff4b4b;
+    background: #ff006e;
     color: white;
     padding: 8px 15px;
-    margin: 5px;
     border-radius: 20px;
+    margin: 5px;
     font-weight: bold;
 }
 
-/* Matching Skill Tags */
-.match-tag {
-    display: inline-block;
-    background: #4ade80;
-    color: black;
-    padding: 8px 15px;
-    margin: 5px;
-    border-radius: 20px;
-    font-weight: bold;
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: rgba(0,0,0,0.3);
+}
+
+/* Progress Bar */
+.stProgress > div > div > div > div {
+    background-color: #00f5d4;
 }
 
 </style>
