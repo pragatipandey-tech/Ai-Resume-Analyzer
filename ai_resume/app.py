@@ -7,7 +7,7 @@ from utils.skills import extract_skills
 from utils.matcher import match_resume
 
 # ---------------- GEMINI API ----------------
-GEMINI_API_KEY = "AIzaSyA32022lwlplavYMdT-Ctes4pOdWsAwwuI"
+GEMINI_API_KEY = "AIzaSyA5eXSA1WgJRkkMGuybgCyFdhWPT58uWw4"
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -26,6 +26,18 @@ st.markdown("""
 .stApp {
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: white;
+}
+            
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Hide Streamlit Branding */
@@ -75,6 +87,12 @@ header {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+}
+            
+.metric-card:hover {
+    transform: translateY(-8px);
+    transition: 0.3s;
+    box-shadow: 0 0 25px rgba(0,245,212,0.5);
 }
 
 /* Buttons */
@@ -137,15 +155,34 @@ section[data-testid="stSidebar"] {
 """, unsafe_allow_html=True)
 
 # ---------------- HEADER ----------------
-st.markdown(
-    "<h1 class='main-title'>🤖 AI ATS Resume Analyzer</h1>",
-    unsafe_allow_html=True
-)
+st.markdown("""
+<div style="
+padding:40px;
+border-radius:25px;
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(15px);
+box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+text-align:center;
+margin-bottom:30px;
+">
 
-st.markdown(
-    "<p class='subtitle'>Analyze resumes according to job descriptions using Gemini AI</p>",
-    unsafe_allow_html=True
-)
+<h1 style="
+font-size:60px;
+color:#00f5d4;
+margin-bottom:10px;
+">
+🤖 AI ATS Resume Analyzer
+</h1>
+
+<p style="
+font-size:20px;
+color:white;
+">
+Analyze resumes intelligently using Gemini AI
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------- LOAD SKILLS ----------------
 with open("data/skills_list.txt") as f:
