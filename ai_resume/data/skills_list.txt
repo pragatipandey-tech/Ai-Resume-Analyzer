@@ -1,17 +1,40 @@
 python
 sql
+mysql
+postgresql
 machine learning
+deep learning
+artificial intelligence
 power bi
+tableau
 excel
 java
 c++
-tableau
-data analysis
+c
+javascript
+html
+css
+react
+node.js
+streamlit
 pandas
 numpy
 matplotlib
-deep learning
+plotly
 tensorflow
+pytorch
+scikit-learn
+nlp
+data analysis
+data visualization
+data science
+statistics
+git
+github
+aws
+azure
+docker
+mongodb
 communication
-teamwork
+leadership
 problem solving

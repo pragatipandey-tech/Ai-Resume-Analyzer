@@ -7,7 +7,7 @@ from utils.skills import extract_skills
 from utils.matcher import match_resume
 
 # ---------------- GEMINI API ----------------
-GEMINI_API_KEY = "AIzaSyA5eXSA1WgJRkkMGuybgCyFdhWPT58uWw4"
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -226,6 +226,9 @@ if uploaded_file and job_desc:
 
     # Job description skills
     job_skills = extract_skills(job_desc, skills_list)
+
+    st.write("Resume Skills:", resume_skills)
+    st.write("Job Skills:", job_skills)
 
     # Matching skills
     matching_skills = [
