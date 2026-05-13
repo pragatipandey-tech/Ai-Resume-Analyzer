@@ -7,7 +7,7 @@ from utils.skills import extract_skills
 from utils.matcher import match_resume
 
 # ---------------- GEMINI API ----------------
-GEMINI_API_KEY = st.secrets["AIzaSyCQoYFafFJXr0JyBWOp__yuPDhL7u1joQg"]
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
