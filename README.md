@@ -60,7 +60,10 @@ ai_ats_resume_analyzer/
 │   ├── skills_list.txt
 │
 ├── images/
-│   ├── screenshot.png
+│   ├── dashboard.png
+│   ├── analytics.png
+│   ├── skill_gap.png
+│   ├── ai_feedback.png
 │
 ├── .streamlit/
 │   ├── secrets.toml
@@ -104,10 +107,16 @@ pip install plotly google-genai
 
 # 🔐 Gemini API Setup
 
-## Create `.streamlit/secrets.toml`
+Create a file:
+
+```text
+.streamlit/secrets.toml
+```
+
+Add this inside:
 
 ```toml
-GEMINI_API_KEY = "AWRxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
 ```
 
 Get Gemini API key from:
@@ -193,6 +202,32 @@ python -m streamlit run app.py
 
 ---
 
+# 📸 Dashboard Preview
+
+## 🏠 Main Dashboard
+
+![Dashboard](images/dashboard.png)
+
+---
+
+## 📊 ATS Analytics
+
+![Analytics](images/analytics.png)
+
+---
+
+## 🧠 Skill Gap Analysis
+
+![Skill Gap](images/skill_gap.png)
+
+---
+
+## 🤖 Gemini AI Feedback
+
+![AI Feedback](images/ai_feedback.png)
+
+---
+
 # 🌟 Future Improvements
 
 - AI Resume Rewriting
@@ -204,22 +239,6 @@ python -m streamlit run app.py
 - Dark/Light Mode Toggle
 - Circular ATS Score Meter
 - AI Career Recommendations
-
----
-
-# 📸 Dashboard Preview
-
-Add your dashboard screenshot here:
-
-```text
-images/screenshot.png
-```
-
-Example Markdown:
-
-```markdown
-![Dashboard Preview](images/screenshot.png)
-```
 
 ---
 
