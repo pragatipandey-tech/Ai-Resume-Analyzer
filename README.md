@@ -206,7 +206,9 @@ python -m streamlit run app.py
 
 ## 🏠 Main Dashboard
 
-![Dashboard](images/dashboard.png)
+![Dashboard](images/dashboard_1.png)
+
+![Dashboard](images/dashboard_2.png)
 
 ---
 
