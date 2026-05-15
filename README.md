@@ -222,6 +222,16 @@ python -m streamlit run app.py
 
 ---
 
+## 🧠 Skill Gap Analysis
+
+![Skill Gap](Images/skill_gap.png)
+
+---
+
+## 🤖 Gemini AI Feedback
+
+![AI Feedback](Images/ai_feedback.png)
+
 ---
 
 # 🌟 Future Improvements
