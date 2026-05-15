@@ -116,7 +116,7 @@ Create a file:
 Add this inside:
 
 ```toml
-GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
+GEMINI_API_KEY = "YAEWxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 Get Gemini API key from:
