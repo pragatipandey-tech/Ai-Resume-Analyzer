@@ -206,27 +206,21 @@ python -m streamlit run app.py
 
 ## 🏠 Main Dashboard
 
-![Dashboard](images/dashboard_1.png)
+![Dashboard](Images/dashboard_1.png)
 
-![Dashboard](images/dashboard_2.png)
+---
+
+## 🏠 ATS Result Dashboard
+
+![Dashboard](Images/dashboard_2.png)
 
 ---
 
 ## 📊 ATS Analytics
 
-![Analytics](images/analytics.png)
+![Analytics](Images/analytics.png)
 
 ---
-
-## 🧠 Skill Gap Analysis
-
-![Skill Gap](images/skill_gap.png)
-
----
-
-## 🤖 Gemini AI Feedback
-
-![AI Feedback](images/ai_feedback.png)
 
 ---
 
