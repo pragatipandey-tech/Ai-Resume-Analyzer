@@ -268,7 +268,7 @@ If you found this project useful:
 
 # 🔥 Project Highlights
 
-- Real AI Integration using Gemini API.
+- Real AI Integration using Gemini API
 - ATS Resume Scoring System
 - NLP-based Skill Extraction
 - Interactive Data Visualization
