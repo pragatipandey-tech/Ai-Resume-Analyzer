@@ -250,7 +250,7 @@ python -m streamlit run app.py
 
 # 📬 Contact
 
-If you like this project, consider giving it a ⭐ on GitHub.
+If you like this project, consider giving it a star⭐ on GitHub.
 
 Feel free to contribute or suggest improvements.
 
